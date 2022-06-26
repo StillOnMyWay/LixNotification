@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Lit App</title>
+    <!-- <script type="module" src="/dist/vite-lit-starter.es.js"></script> -->
+    <!-- <script src="/distro/lixnotification.js"></script> -->
+    <script src="/dist/vite-lit-starter.iife.js"></script>
+    <!-- <script type="module" src="src/my-element.js"></script> -->
+    <!-- <script
+      type="module"
+      src="https://www.threedsoftware.com/_functions/lixnotification/bob.js"
+    ></script> -->
+
+    <style>
+      form * {
+        display: block;
+        margin-top: 20px;
+      }
+      label {
+        font-family: Arial;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <notification-element id="notifelem" _show="true">
+      <p>This is child content</p>
+    </notification-element>
+
+    <form id="myForm" action="#">
+      <legend>Test Data Submission</legend>
+      <label for="textarea">Plain Text Message</label>
+      <textarea id="textarea"></textarea>
+      <button type="button" style="" id="buttonClick">Handle the input</button>
+    </form>
+
+    <script>
+      // document.getElementById('myForm').addEventListener('formdata', (e) => {
+      //   const data = e.formData;
+      //   alert('Submitted', JSON.stringify(e));
+      //   console.log(data.getAll('textarea'));
+      // });
+
+      document.getElementById('buttonClick').addEventListener('click', (e) => {
+        const message = document.getElementById('textarea').value;
+
+        console.log('Message is:', message);
+
+        const NotificationManager = document.getElementById('notifelem');
+
+        NotificationManager.setAttribute('showMessage', message);
+      });
+    </script>
+  </body>
+</html>
